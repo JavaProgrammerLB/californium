@@ -21,6 +21,7 @@ package org.eclipse.californium.core.observe;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.eclipse.californium.core.coap.CoAP.Type;
 import org.eclipse.californium.core.coap.Response;
 
 
@@ -93,6 +94,10 @@ public class ObserveNotificationOrderer {
 		if (!response.getOptions().hasObserve()) {
 			// this is a final response, e.g., error or proactive cancellation
 			return true;
+		}
+
+		if (response.getType() == Type.ACK){
+			return false;
 		}
 		
 		// Multiple responses with different notification numbers might

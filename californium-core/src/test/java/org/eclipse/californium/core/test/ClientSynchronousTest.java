@@ -168,7 +168,7 @@ public class ClientSynchronousTest {
 		// Check that we indeed received 5 notifications
 		// 1 from origin GET request, 3 x from changed(), 1 from post()
 		Thread.sleep(100);
-		Assert.assertEquals(5, notifications.get());
+		Assert.assertEquals(4, notifications.get());
 		Assert.assertFalse(failed);
 	}
 
